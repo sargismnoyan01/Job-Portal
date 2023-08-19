@@ -60,7 +60,7 @@ class JobCreate(models.Model):
     timetype=[
         ('Full Time',Full_time),
         ('Part Time',Part_time),
-    ]
+    ] 
     Marketing = 'Marketing'
     Customer_Service = 'Customer Service'
     Human_Resource = 'Human Resource'
