@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <form action="" method="post" enctype="multipart/form-data" class="p-4 shadow-lg rounded-lg">
+                {% csrf_token %}
+                <h1 class="mb-4"><b>Post a Job</b></h1>
+                <hr><br><br>
+                <div class="mb-3">
+                    <label for="{{ form.proff.id_for_label }}" class="form-label"><b>Job Title:</b></label>
+                    &nbsp;{{ form.proff }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.categories.id_for_label }}" class="form-label"><b>Category:</b></label>
+                    &nbsp;{{ form.categories }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.location.id_for_label }}" class="form-label"><b>Location:</b></label>
+                    &nbsp;{{ form.location }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.jobtime.id_for_label }}" class="form-label"><b>Job Time:</b></label>
+                    {{ form.jobtime }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Salary Range</b></label>
+                    <div class="d-flex">
+                        <div class="flex-grow-1 me-1" style="max-width: 45%;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;Min - {{ form.min_salary }}
+                        </div>
+                        <div class="flex-grow-1 ms-1" style="max-width: 45%;">
+                            Max - {{ form.max_salary }}
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+
+                <div class="mb-3">
+                    <label for="{{ form.discription.id_for_label }}" class="form-label"><b>Job Description:</b></label>
+                    {{ form.discription }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.responsibility.id_for_label }}" class="form-label"><b>Responsibility:</b></label>
+                    &nbsp;&nbsp;&nbsp;{{ form.responsibility }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.about_company.id_for_label }}" class="form-label"><b>Company Detail:</b></label>
+                    {{ form.about_company }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.qualifications.id_for_label }}" class="form-label"><b>Qualifications:</b></label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{{ form.qualifications }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.email.id_for_label }}" class="form-label"><b>Email:</b></label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.email }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.img.id_for_label }}" class="form-label"><b>Images:</b></label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;{{ form.img }}
+                </div>
+
+                <button type="submit" class="btn btn-primary py-3 px-5">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
