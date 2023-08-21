@@ -129,6 +129,17 @@ class JobDetail(DetailView):
             obj=form.save(commit=False)
             obj.obj=subjobi
             obj.save()
+            email=EmailMessage(
+                subject=f'Նոր տեղեկություն ձեր տեղադրած {subjobi.proff} հաստիքի վերաբերյալ',
+                body=f'''name-{request.POST.get('name')},
+                email-{request.POST.get('email')},
+                Portfolio-{request.POST.get('portfolio')},
+                coverlatter-{request.POST.get('coverlatter')},
+                ''',
+                from_email=EMAIL_HOST_USER,
+                to=[subjobi.email]
+            )
+            email.send()
             return redirect('home')
         else:
             form=ApplyForm()
