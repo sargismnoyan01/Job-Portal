@@ -20,6 +20,8 @@ urlpatterns=[
     path('register/',Register,name='register'),
     path('login/',LoginPage,name='login'),
     path('logout/',LogoutPage,name='logout'),
+    path('<int:jobcreate_id>/like', like, name='like'),
+
             ]
 
 

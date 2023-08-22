@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 # ***Home***
 class HomeCarousel(models.Model):
@@ -94,6 +94,8 @@ class JobCreate(models.Model):
     qualifications=models.TextField('Qualifications',null=True)
     about_company=models.TextField('Company Detail',null=True)
     email=models.EmailField('Email',null=True)
+    likes=models.IntegerField(default=0,blank=True)
+
     
 
     def __str__(self) -> str:
@@ -222,3 +224,6 @@ class MessageModel(models.Model):
         verbose_name='Message'
         verbose_name_plural='Messages'
 
+class Likes(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='user_likes')
+    jobcreate=models.ForeignKey(JobCreate,on_delete=models.CASCADE,related_name='jobcreate_likes')

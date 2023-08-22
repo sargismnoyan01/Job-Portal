@@ -99,6 +99,11 @@
                                     </div>
                                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                         <div class="d-flex mb-3">
+                                            {% if user.is_authenticated %}
+                                            <a  class="btn btn-light btn-square me-3" href="{% url 'like' jobcreate_id=i.id %}">{{ i.likes }}&nbsp;&nbsp;&nbsp;<i class="far fa-heart text-primary"></i></a>
+                                            {% else %}
+                                            <a  class="btn btn-light btn-square me-3" href="{% url 'login' %}">{{ i.likes }}&nbsp;&nbsp;&nbsp;<i class="far fa-heart text-primary"></i></a>
+                                            {% endif %}
                                             <a class="btn btn-primary" href="{% url 'detail' i.id %}">Apply Now</a>
                                         </div>
                                         <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Line: {{ i.dt }}</small>

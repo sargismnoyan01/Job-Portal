@@ -15,7 +15,7 @@ class HomeListView(ListView):
 
     def get(self,request):
         homecarousel=HomeCarousel.objects.all()
-        jobcreate=JobCreate.objects.all()
+        jobcreate=JobCreate.objects.all().order_by('-likes')
         homeabout=HomeAbout.objects.get()
         ourcleint=OurCleints.objects.all()
         maincategories=MainCategories.objects.all()
@@ -307,7 +307,7 @@ def Register(request):
         form=UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('login')
         else:
             form=UserCreationForm()
 
@@ -339,3 +339,19 @@ def LogoutPage(request):
 def custom_404_view(request,exception):
     return render(request, '404.html', status=404)
 
+
+
+def like(request,jobcreate_id):
+    user=request.user
+    jobcreate=JobCreate.objects.get(id=jobcreate_id)
+    current_likes=jobcreate.likes
+    liked=Likes.objects.filter(user=user,jobcreate=jobcreate).count()
+    if not liked:
+        liked=Likes.objects.create(user=user,jobcreate=jobcreate)
+        current_likes=current_likes + 1
+    else:
+        liked=Likes.objects.filter(user=user,jobcreate=jobcreate).delete()
+        current_likes=current_likes - 1
+    jobcreate.likes=current_likes
+    jobcreate.save()
+    return redirect('detail', id=jobcreate_id)
