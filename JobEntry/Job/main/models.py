@@ -10,49 +10,6 @@ class HomeCarousel(models.Model):
     def __str__(self) -> str:
         return self.title
     
-class JobList(models.Model):
-    Full_time='Full Time'
-    Part_time='Part Time'
-    timetype=[
-        ('Full Time',Full_time),
-        ('Part Time',Part_time),
-    ]
-    Marketing = 'Marketing'
-    Customer_Service = 'Customer Service'
-    Human_Resource = 'Human Resource'
-    Project_Management = 'Project Management'
-    Business_Development = 'Business Development'
-    Sales_and_Communication = 'Sales & Communication'
-    Teaching_and_Education = 'Teaching & Education'
-    Design_and_Creative = 'Design & Creative'
-
-    category = [
-        (Marketing, 'Marketing'),
-        (Customer_Service, 'Customer Service'),
-        (Human_Resource, 'Human Resource'),
-        (Project_Management, 'Project Management'),
-        (Business_Development, 'Business Development'),
-        (Sales_and_Communication, 'Sales & Communication'),
-        (Teaching_and_Education, 'Teaching & Education'),
-        (Design_and_Creative, 'Design & Creative'),
-    ]
-
-    proff=models.CharField('Job title',max_length=255)
-    location=models.CharField('Location',max_length=55)
-    jobtime=models.CharField('Job Time',choices=timetype,max_length=50)
-    min_salary=models.IntegerField('Min salary')
-    max_salary=models.IntegerField('Max salary')
-    dt=models.DateField(auto_now_add=True)
-    img=models.ImageField('Imagers',upload_to='Jobs_media')
-    categories=models.CharField('Category',choices=category,max_length=50,blank=True)
-    
-
-    def __str__(self) -> str:
-        return self.proff
-    
-    class Meta:
-        verbose_name='Job'
-        verbose_name_plural='Jobs'
 
 class JobCreate(models.Model):
     Full_time='Full Time'
@@ -71,14 +28,14 @@ class JobCreate(models.Model):
     Design_and_Creative = 'Design & Creative'
 
     category = [
-        (Marketing, 'Marketing'),
-        (Customer_Service, 'Customer Service'),
-        (Human_Resource, 'Human Resource'),
-        (Project_Management, 'Project Management'),
-        (Business_Development, 'Business Development'),
-        (Sales_and_Communication, 'Sales & Communication'),
-        (Teaching_and_Education, 'Teaching & Education'),
-        (Design_and_Creative, 'Design & Creative'),
+        ('Marketing', 'Marketing'),
+        ('Customer Service', 'Customer Service'),
+        ('Human_Resource', 'Human Resource'),
+        ('Project_Management', 'Project Management'),
+        ('Business_Development', 'Business Development'),
+        ('Sales_and_Communication', 'Sales & Communication'),
+        ('Teaching_and_Education', 'Teaching & Education'),
+        ('Design_and_Creative', 'Design & Creative'),
     ]
 
     proff=models.CharField('Job title',max_length=255)
@@ -97,7 +54,6 @@ class JobCreate(models.Model):
     likes=models.IntegerField(default=0,blank=True)
 
     
-
     def __str__(self) -> str:
         return self.proff
     
@@ -133,20 +89,6 @@ class Apply(models.Model):
     class Meta:
         verbose_name='Apply'
         verbose_name_plural='Apply'    
-
-
-class OurCleints(models.Model):
-    img=models.ImageField('Imagers',upload_to='Cleint_media')
-    text=models.TextField('Text')
-    name=models.CharField('Name',max_length=50)
-    prof=models.CharField('Profession',max_length=50)
-
-    def __str__(self) -> str:
-        return self.name
-    
-    class Meta:
-        verbose_name='Cleint'
-        verbose_name_plural='Cleints'
 
 
 class MainCategories(models.Model):
@@ -200,7 +142,7 @@ class Talent(models.Model):
 class ContactUs(models.Model):
     address=models.CharField('address',max_length=50)
     email=models.EmailField('email')
-    phone=models.CharField('prone',max_length=18)
+    phone=models.CharField('phone',max_length=18)
 
 
     def __str__(self) -> str:

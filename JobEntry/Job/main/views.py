@@ -16,8 +16,8 @@ class HomeListView(ListView):
     def get(self,request):
         homecarousel=HomeCarousel.objects.all()
         jobcreate=JobCreate.objects.all().order_by('-likes')
+        ourcleint=Testimonial.objects.filter(id__in=[1,2,3,4,5,6]) 
         homeabout=HomeAbout.objects.get()
-        ourcleint=OurCleints.objects.all()
         maincategories=MainCategories.objects.all()
         contactus=ContactUs.objects.get()
 
@@ -25,10 +25,10 @@ class HomeListView(ListView):
 
         context={
             'link':'home',
+            'ourcleint':ourcleint,
             'homecarousel':homecarousel,
             'jobcreate':jobcreate,
             'homeabout':homeabout,
-            'ourcleint':ourcleint,
             'maincategories':maincategories,
             'contactus':contactus
 
@@ -38,7 +38,7 @@ class HomeListView(ListView):
 
 
 def SearchWord(request):
-    ourcleint=OurCleints.objects.all()
+    ourcleint=Testimonial.objects.filter(id__in=[1,2,3,4,5,6])
     contactus=ContactUs.objects.get()
 
     jobcreate=JobCreate.objects.filter(proff__icontains=request.GET.get('p'),\

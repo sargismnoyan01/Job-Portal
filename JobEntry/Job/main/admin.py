@@ -27,11 +27,6 @@ class JobCreateListModelAdmin(admin.ModelAdmin):
     list_display_links=['proff','location','dt']
     search_fields=['proff','location','dt']
 
-@admin.register(OurCleints)
-class CleintModelAdmin(admin.ModelAdmin):
-    list_display=['name','prof',]
-    list_display_links=['name','prof',]
-    search_fields=['name','prof','text']
 
 @admin.register(Talent)
 class TalentModelAdmin(admin.ModelAdmin):
