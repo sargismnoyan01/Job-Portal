@@ -31,4 +31,4 @@ class MessageForm(forms.ModelForm):
 class CretionUserForm(UserCreationForm):
     class Meta:
         model=User
-        fields=['username','username','last_name','email','password1','password2']
+        fields=['username','last_name','email','password1','password2']

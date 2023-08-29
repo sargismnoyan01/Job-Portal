@@ -131,7 +131,8 @@ class JobDetail(DetailView):
             obj.save()
             email=EmailMessage(
                 subject=f'Նոր տեղեկություն ձեր տեղադրած {subjobi.proff} հաստիքի վերաբերյալ',
-                body=f'''name-{request.POST.get('name')},
+                body=f'''
+                name-{request.POST.get('name')},
                 email-{request.POST.get('email')},
                 Portfolio-{request.POST.get('portfolio')},
                 coverlatter-{request.POST.get('coverlatter')},
