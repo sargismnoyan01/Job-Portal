@@ -171,3 +171,20 @@ class MessageModel(models.Model):
 class Likes(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='user_likes')
     jobcreate=models.ForeignKey(JobCreate,on_delete=models.CASCADE,related_name='jobcreate_likes')
+
+class UserInfo(models.Model):
+    obj=models.ForeignKey(User,on_delete=models.CASCADE,related_name='userp')
+    img=models.ImageField('imagers',upload_to='users')
+    prof=models.CharField('profession',max_length=255)
+    about=models.TextField('about',blank=True)
+    education=models.CharField('Education',blank=True,max_length=255)
+    licenses=models.CharField('Licenses & certificationsLicenses',blank=True,max_length=255)
+    skills=models.CharField('skills',max_length=500,blank=True)
+
+
+    def __str__(self) -> str:
+        return self.prof
+
+    class Meta:
+        verbose_name='User Info'
+        verbose_name_plural='Users info'

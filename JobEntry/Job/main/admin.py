@@ -38,3 +38,10 @@ class MessageModelAdmin(admin.ModelAdmin):
     list_display=['name']
     list_display_links=['name']
     search_fields=['name']
+
+
+@admin.register(UserInfo)
+class UserInfoModelAdmin(admin.ModelAdmin):
+    list_display=['prof','skills']
+    list_display_links=['prof','skills']
+    search_fields=['prof','skills']

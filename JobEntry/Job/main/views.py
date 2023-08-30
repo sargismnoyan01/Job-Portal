@@ -356,3 +356,46 @@ def like(request,jobcreate_id):
     jobcreate.likes=current_likes
     jobcreate.save()
     return redirect('detail', id=jobcreate_id)
+
+
+class UserPage(DetailView):
+    template_name='user.html'
+
+    def get(self,request,id):
+        user=User.objects.filter(pk=id)
+        usern=request.user
+
+        context={
+                'user':user,
+                'usern':usern
+                }
+        return render(request,self.template_name,context)
+    
+
+
+
+
+class UserFormView(ListView):
+    template_name='user1.html'
+
+    def get(self,request):
+        form=UserForm
+
+        context={
+                'form':form,  
+                }
+        
+
+        return render(request,self.template_name,context)
+
+    def post(self,request):
+        form=UserForm(request.POST,request.FILES)
+        if form.is_valid():
+            obj=form.save(commit=False)
+            obj.obj=request.user
+            obj.save()
+            return redirect('home')
+        else:
+            form=UserCreationForm()
+
+        return render(request,self.template_name,{'form':form})

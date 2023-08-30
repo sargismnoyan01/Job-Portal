@@ -21,6 +21,8 @@ urlpatterns=[
     path('login/',LoginPage,name='login'),
     path('logout/',LogoutPage,name='logout'),
     path('<int:jobcreate_id>/like', like, name='like'),
+    path('user/<int:id>/',UserPage.as_view(),name='user'),
+    path('userform/',UserFormView.as_view(),name='userform'),
 
             ]
 

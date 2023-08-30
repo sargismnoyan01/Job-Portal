@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.username }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        form {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 2px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="{{ form.img.id_for_label }}">Profile Image:</label>
+        {{ form.img }}
+        
+        <label for="{{ form.prof.id_for_label }}">Profession:</label>
+        {{ form.prof }}
+        
+        <label for="{{ form.about.id_for_label }}">About:</label>
+        {{ form.about }}
+        
+        <label for="{{ form.education.id_for_label }}">Education:</label>
+        {{ form.education }}
+        
+        <label for="{{ form.licenses.id_for_label }}">Licenses & Certifications:</label>
+        {{ form.licenses }}
+        
+        <label for="{{ form.skills.id_for_label }}">Skills:</label>
+        {{ form.skills }}
+        
+        <button type="submit">SUBMIT</button>
+    </form>
+</body>
+</html>
