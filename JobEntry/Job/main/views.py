@@ -141,7 +141,7 @@ class JobDetail(DetailView):
                 to=[subjobi.email]
             )
             email.send()
-            return redirect('home')
+            return redirect('joblist')
         else:
             form=ApplyForm()
         
@@ -291,7 +291,7 @@ class ContactView(ListView):
                 to=[request.POST.get('email')]
             )
             email.send()
-            return redirect('home')
+            return redirect('contact')
         else:
             form=MessageForm()
 
