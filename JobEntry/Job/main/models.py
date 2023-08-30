@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 # ***Home***
 class HomeCarousel(models.Model):
@@ -142,11 +144,11 @@ class Talent(models.Model):
 class ContactUs(models.Model):
     address=models.CharField('address',max_length=50)
     email=models.EmailField('email')
-    phone=models.CharField('phone',max_length=18)
+    phone=PhoneNumberField()
 
 
     def __str__(self) -> str:
-        return self.phone
+        return self.address
     
     class Meta:
         verbose_name='Contact Us'
