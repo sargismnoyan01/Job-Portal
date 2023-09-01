@@ -89,6 +89,9 @@
                                     </div>
                                 </div>
                             </form>
+                            {% for message in messages %}
+                            <p style="color: red;">{{ message }}</p>
+                            {% endfor %}
                             {% else %}
                             <div class="col-12">
                                 <a href="{% url 'register' %}" class="btn btn-primary w-100 py-3">Send Message</a>

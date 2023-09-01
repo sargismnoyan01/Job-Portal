@@ -6,6 +6,7 @@ from django.core.mail import EmailMessage
 from Job.settings import EMAIL_HOST_USER
 from django.core.paginator import Paginator
 from django.contrib.auth import login,logout,authenticate
+from django.contrib import messages
 
 
 # ***Home***
@@ -294,6 +295,7 @@ class ContactView(ListView):
             return redirect('contact')
         else:
             form=MessageForm()
+            messages.warning(request,'There are incorrect or missing data')
 
         return render(request,self.template_name,{
                                             'contactus':contactus,
@@ -310,7 +312,7 @@ def Register(request):
             form.save()
             return redirect('login')
         else:
-            form=UserCreationForm()
+            messages.warning(request,'Review the filled data and try again')
 
     return render(request,'register.html',{'form':form,
                                            'contactus':contactus,
@@ -327,7 +329,7 @@ def LoginPage(request):
             login(request,user)
             return redirect('home')
         else:
-            return redirect('register')
+            messages.warning(request, 'Incorrect username or password')
 
     return render(request,'login.html',{'contactus':contactus,
                                         'link':'Login Page'})

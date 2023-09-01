@@ -176,11 +176,11 @@
         <h2>{{ user_item.username }}</h2>
         {% for profile_item in user_item.userp.all %}
             <div class="profile-section">
-                <img src="{{ profile_item.img.url }}" alt="{{ profile_item.about }}" width="350">
-                <h4><b>About</b></h4>
-                <p class="about">{{ profile_item.about }}</p>
+                <img src="{{ profile_item.img.url }}" alt="{{ profile_item.about }}" width="200px">
                 <h4>Profession</h4>
                 <p class="profession">{{ profile_item.prof }}</p>
+                <h4><b>About</b></h4>
+                <p class="about">{{ profile_item.about }}</p>
                 <h4>Education</h4>
                 <p class="education">{{ profile_item.education }}</p>
                 <h4>Licenses</h4>
