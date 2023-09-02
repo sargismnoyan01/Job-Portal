@@ -58,6 +58,8 @@
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>
                     <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                    <a href="{% url 'searchuser' %}" class="nav-item nav-link">Users</a>
+
                     {% if user.is_authenticated %}
                         {% if user.userp.all %}
                             <a href="{% url 'user' user.id %}" class="nav-item nav-link">{{ user }}</a>

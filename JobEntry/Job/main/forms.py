@@ -36,4 +36,4 @@ class CretionUserForm(UserCreationForm):
 class UserForm(forms.ModelForm):
     class Meta:
         model=UserInfo
-        fields=['img','prof','about','education','licenses','skills']
+        fields=['img','prof','about','education','licenses','skills','open']

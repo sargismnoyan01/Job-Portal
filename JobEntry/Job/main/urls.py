@@ -23,6 +23,8 @@ urlpatterns=[
     path('<int:jobcreate_id>/like', like, name='like'),
     path('user/<int:id>/',UserPage.as_view(),name='user'),
     path('userform/',UserFormView.as_view(),name='userform'),
+    path('searchuser/',SearchUser.as_view(),name='searchuser'),
+    path('username/',SearchWorker,name='searchworker'),
 
             ]
 

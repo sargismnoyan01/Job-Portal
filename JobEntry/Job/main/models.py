@@ -180,6 +180,8 @@ class UserInfo(models.Model):
     education=models.CharField('Education',blank=True,max_length=255)
     licenses=models.CharField('Licenses & certificationsLicenses',blank=True,max_length=255)
     skills=models.CharField('skills',max_length=500,blank=True)
+    open=models.BooleanField('Open to work',default=True)
+
 
 
     def __str__(self) -> str:

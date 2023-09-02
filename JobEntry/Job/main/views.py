@@ -401,3 +401,33 @@ class UserFormView(ListView):
             form=UserCreationForm()
 
         return render(request,self.template_name,{'form':form})
+    
+class SearchUser(ListView):
+    template_name = 'searchuser.html'
+
+    def get(self,request):
+        me=request.user
+        user=User.objects.all()
+        subuser=User.objects.filter()
+        context={
+            'me':me,
+            'user':user,
+            'subuser':subuser,
+
+
+                }
+        
+        return render(request,self.template_name,context)
+    
+def SearchWorker(request):
+    me=request.user
+    subuser=User.objects.filter()
+    user=User.objects.filter(username__icontains=request.GET.get('u'))
+
+    context={
+        'me':me,
+        'subuser':subuser,
+        'user':user,
+            }
+    
+    return render(request,'searchuser.html',context)

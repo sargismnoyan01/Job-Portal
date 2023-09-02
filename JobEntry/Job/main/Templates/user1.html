@@ -11,7 +11,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 150vh;
             margin: 0;
         }
         
@@ -20,7 +20,7 @@
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            width: 400px;
+            width: 500px;
         }
         
         label {
@@ -53,18 +53,28 @@
             padding: 10px 15px;
             cursor: pointer;
         }
+        .form-group {
+            display: flex;
+            align-items: center; /* Vertically center-align items */
+        }
+
+        .form-group label {
+            margin-right: 10px; /* Add some spacing between the label and the input */
+        }
     </style>
 </head>
 <body>
     <form action="" method="post" enctype="multipart/form-data">
+        <h5 style="color: rgb(105, 81, 226);">Fill in your information so that you can find a job more easily</h5>
+        <h5 style="color: red;">fields(*) with an asterisk are required</h5>
         {% csrf_token %}
-        <label for="{{ form.img.id_for_label }}">Profile Image:</label>
+        <label for="{{ form.img.id_for_label }}">Profile Image:*</label>
         {{ form.img }}
         
-        <label for="{{ form.prof.id_for_label }}">Profession:</label>
+        <label for="{{ form.prof.id_for_label }}">Profession:*</label>
         {{ form.prof }}
         
-        <label for="{{ form.about.id_for_label }}">About:</label>
+        <label for="{{ form.about.id_for_label }}">About:*</label>
         {{ form.about }}
         
         <label for="{{ form.education.id_for_label }}">Education:</label>
@@ -73,10 +83,15 @@
         <label for="{{ form.licenses.id_for_label }}">Licenses & Certifications:</label>
         {{ form.licenses }}
         
-        <label for="{{ form.skills.id_for_label }}">Skills:</label>
+        <label for="{{ form.skills.id_for_label }}">Skills:*</label>
         {{ form.skills }}
-        
+        <div class="form-group">
+            <label for="{{ form.open.id_for_label }}">I do not work</label>
+            {{ form.open }}
+        </div>
+               
         <button type="submit">SUBMIT</button>
+        <h5><a href="{% url 'home' %}">Back to home</a> -Your entered data will be completely deleted)</h5>
     </form>
 </body>
 </html>
