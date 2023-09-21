@@ -42,9 +42,12 @@ def SearchWord(request):
     ourcleint=Testimonial.objects.filter(id__in=[1,2,3,4,5,6])
     contactus=ContactUs.objects.get()
 
-    jobcreate=JobCreate.objects.filter(proff__icontains=request.GET.get('p'),\
-                        categories__icontains=request.GET.get('c'),location__icontains=request.GET.get('l'))
-    return render(request,'index.html',{'jobcreate':jobcreate,
+    jobcreate=JobCreate.objects.filter(proff__icontains=request.GET.get('p'),
+                        categories__icontains=request.GET.get('c'),location__icontains=request.GET.get('l'),\
+                            jobtime__icontains=request.GET.get('j'))
+    return render(request,'index.html',{
+                                        'link':'Search',
+                                        'jobcreate':jobcreate,
                                         'ourcleint':ourcleint,
                                         'contactus':contactus})
 
@@ -366,6 +369,7 @@ class UserPage(DetailView):
     def get(self,request,id):
         user=User.objects.filter(pk=id)
         usern=request.user
+        usern.username=usern.username.capitalize()
 
         context={
                 'user':user,

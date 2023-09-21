@@ -32,12 +32,12 @@ class JobCreate(models.Model):
     category = [
         ('Marketing', 'Marketing'),
         ('Customer Service', 'Customer Service'),
-        ('Human_Resource', 'Human Resource'),
-        ('Project_Management', 'Project Management'),
-        ('Business_Development', 'Business Development'),
-        ('Sales_and_Communication', 'Sales & Communication'),
-        ('Teaching_and_Education', 'Teaching & Education'),
-        ('Design_and_Creative', 'Design & Creative'),
+        ('Human Resource', 'Human Resource'),
+        ('Project Management', 'Project Management'),
+        ('Business Development', 'Business Development'),
+        ('Sales_and Communication', 'Sales & Communication'),
+        ('Teaching and Education', 'Teaching & Education'),
+        ('Design and Creative', 'Design & Creative'),
     ]
 
     proff=models.CharField('Job title',max_length=255)

@@ -39,6 +39,9 @@
                             <div class="col-md-4">
                                 <input type="text" type="search" name="l" class="form-control border-0" placeholder="Location" />
                             </div>
+                            <div class="col-md-4">
+                                <input type="text" type="search" name="j" class="form-control border-0" placeholder="Job Time" />
+                            </div>
                             <div class="col-md-2">
                                 <button class="btn btn-dark border-0 w-100" type="submit">Search</button>
                             </div>
@@ -114,6 +117,7 @@
                             <a class="btn btn-primary py-3 px-5" href="{% url 'joblist' %}">Browse More Jobs</a>
                         </div>
                     </div>
+                    <h5><b>Number of total jobs-{{ jobcreate | length }} </b><br></h5>
                 </div>
             </div>
         </div>
