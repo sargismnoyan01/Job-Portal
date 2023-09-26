@@ -369,7 +369,7 @@ class UserPage(DetailView):
     def get(self,request,id):
         user=User.objects.filter(pk=id)
         usern=request.user
-        usern.username=usern.username.capitalize()
+        # usern.username=usern.username.capitalize()
 
         context={
                 'user':user,
@@ -435,3 +435,34 @@ def SearchWorker(request):
             }
     
     return render(request,'searchuser.html',context)
+
+def Saves(request,id):
+    job=JobCreate.objects.get(pk=id)
+    user=request.user
+    current_savec=job.savec
+    saved=Saved.objects.filter(job=job,user=user).count()
+    if not saved:
+        saved=Saved.objects.create(user=user,job=job)
+        current_savec=current_savec + 1
+    else:
+        saved=Saved.objects.filter(user=user,job=job).delete()
+        current_savec=current_savec - 1
+    job.savec=current_savec
+    job.save()
+
+    return redirect('savepage')
+
+class SavePage(ListView):
+    template_name='savepage.html'
+
+    def get(self,request):
+        contactus=ContactUs.objects.get()
+        user=request.user
+        job=Saved.objects.filter(user=user)
+        context={
+            'link':'savepage',
+            'job':job,
+            'contactus':contactus,
+                }
+        
+        return render(request,self.template_name,context)

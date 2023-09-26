@@ -104,6 +104,7 @@
                                         <div class="d-flex mb-3">
                                             {% if user.is_authenticated %}
                                             <a  class="btn btn-light btn-square me-3" href="{% url 'like' jobcreate_id=i.id %}">{{ i.likes }}&nbsp;&nbsp;&nbsp;<i class="far fa-heart text-primary"></i></a>
+                                            <a class="btn btn-primary" href="{% url 'saves' i.id %}">Save</a>&nbsp;
                                             {% else %}
                                             <a  class="btn btn-light btn-square me-3" href="{% url 'login' %}">{{ i.likes }}&nbsp;&nbsp;&nbsp;<i class="far fa-heart text-primary"></i></a>
                                             {% endif %}

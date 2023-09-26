@@ -54,6 +54,7 @@ class JobCreate(models.Model):
     about_company=models.TextField('Company Detail',null=True)
     email=models.EmailField('Email',null=True)
     likes=models.IntegerField(default=0,blank=True)
+    savec=models.IntegerField(default=0)
 
     
     def __str__(self) -> str:
@@ -190,3 +191,8 @@ class UserInfo(models.Model):
     class Meta:
         verbose_name='User Info'
         verbose_name_plural='Users info'
+
+
+class Saved(models.Model):
+    job=models.ForeignKey(JobCreate,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)

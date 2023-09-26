@@ -168,6 +168,23 @@
             margin: 10px 0;
             padding: 0;
         }
+        .profile-picture-section{
+            display: flex;
+            gap: 50px;
+        }
+        .buttons{
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            justify-content: center;
+            align-items: center;
+        }
+        .buttons button{
+            display: inline-block;
+            padding: 5px 0;
+            font-size: 20px;
+            width: 200px;
+        }
     </style>
 </head>
 <body>
@@ -176,7 +193,17 @@
         <h2>{{ user_item.username }}</h2>
         {% for profile_item in user_item.userp.all %}
             <div class="profile-section">
-                <img src="{{ profile_item.img.url }}" alt="{{ profile_item.about }}" width="200px">
+                <div class="profile-picture-section">
+                    <img src="{{ profile_item.img.url }}" alt="{{ profile_item.about }}" width="200px">
+                    {% if usern == user_item %}
+                    <div class="buttons">
+                        <a href="{% url 'savepage' %}"><button class="btn btn-primary py-3 px-5 mt-3">Saves</button></a>
+                        <!-- <button class="btn btn-primary py-3 px-5 mt-3">Likes</button> -->
+                    {% endif %}
+                        <!-- <button class="btn btn-primary py-3 px-5 mt-3">my likes</button> -->
+
+                    </div>
+                </div>
                 <h4>Profession</h4>
                 <p class="profession">{{ profile_item.prof }}</p>
                 <h4><b>About</b></h4>

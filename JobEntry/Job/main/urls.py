@@ -25,6 +25,9 @@ urlpatterns=[
     path('userform/',UserFormView.as_view(),name='userform'),
     path('searchuser/',SearchUser.as_view(),name='searchuser'),
     path('username/',SearchWorker,name='searchworker'),
+    path('save/<int:id>/',Saves,name='saves'),
+    path('savepage/',SavePage.as_view(),name='savepage')
+    
 
             ]
 
