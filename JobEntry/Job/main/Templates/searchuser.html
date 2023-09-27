@@ -144,13 +144,7 @@
                             <a href="{% url 'userform' %}" class="nav-item nav-link">{{ user }}</a> 
                         {% endif %}
                     {% endif %}
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="{% url 'joblist' %}" class="dropdown-item">Job List</a>
-                            <a href="{% url 'detail' 1 %}" class="dropdown-item">Job Detail</a>
-                        </div>
-                    </div>
+                        <a href="{% url 'joblist' %}" class="nav-link dropdown">Jobs</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 m-0">

@@ -5,6 +5,7 @@ from .models import *
 admin.site.register(HomeAbout)
 admin.site.register(MainCategories)
 admin.site.register(Testimonial)
+admin.site.register(Saved)
 admin.site.register(ContactUs)
 
 

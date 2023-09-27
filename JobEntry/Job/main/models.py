@@ -54,7 +54,8 @@ class JobCreate(models.Model):
     about_company=models.TextField('Company Detail',null=True)
     email=models.EmailField('Email',null=True)
     likes=models.IntegerField(default=0,blank=True)
-    savec=models.IntegerField(default=0)
+    savec=models.IntegerField(default=0,blank=True)
+    dissave=models.BooleanField(default=True,blank=True)
 
     
     def __str__(self) -> str:

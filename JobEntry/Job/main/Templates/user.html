@@ -101,13 +101,8 @@
 
 
 
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="{% url 'joblist' %}" class="dropdown-item">Job List</a>
-                            <a href="{% url 'detail' 1 %}" class="dropdown-item">Job Detail</a>
-                        </div>
-                    </div>
+                        <a href="{% url 'joblist' %}" class="nav-link dropdown">Jobs</a>
+
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 m-0">
@@ -190,7 +185,7 @@
 <body>
     {% for user_item in user %}
     <div class="user-profile">
-        <h2>{{ user_item.username }}</h2>
+        <h2>{{ usern.username }}</h2>
         {% for profile_item in user_item.userp.all %}
             <div class="profile-section">
                 <div class="profile-picture-section">
@@ -213,7 +208,7 @@
                 <h4>Licenses</h4>
                 <p class="licenses">{{ profile_item.licenses }}</p>
                 <h4>Skills</h4>
-                <p class="skills">{{ profile_item.skills | safe }}</p>
+                <p class="skills">{{ profile_item.skills| safe }}</p>
             </div>
         {% endfor %}
     </div>

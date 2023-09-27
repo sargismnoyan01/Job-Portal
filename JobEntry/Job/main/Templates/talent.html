@@ -1,9 +1,33 @@
 {% extends 'base.html' %}
     {% block content %}
         <!-- Jobs Start -->
+        <form action="{% url 'searchtalent' %}" method="get">
+        <div>
+        <input type="text" type="search" placeholder="Profession" name="prof">
+        <input type="text" type="search" placeholder="Profession" name="rank">
+
+         <!-- <p><b>Levels</b></p>
+         <input class="btn btn-primary"  type="radio" value="Junior" name="rank">
+        </div>
+        
+            <input class="btn btn-primary" type="radio" value="Middel" name="rank" >
+            <input class="btn btn-primary" type="radio" value="Senior" name="rank" >
+            <input class="btn btn-primary" type="radio" value="Leader" name="rank" > -->
+<!-- 
+            <button class="btn btn-primary">Middel</button>
+            <button class="btn btn-primary">Senior</button>
+            <button class="btn btn-primary">Leader</button> -->
+            <button class="btn btn-primary" type="submit">Search</button> <hr>
+            <hr>
+            </div>
+
+        </form>
         <div class="container-xxl py-5">
             <div class="container">
                 <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Talents</h1>
+                {% if user.is_authenticated %}
+                <a href="{% url 'resiume' %}" class="btn btn-primary">Create Resiume</a>
+            {% endif %}
                 <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
@@ -21,7 +45,7 @@
                                     </div>
                                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                         <div class="d-flex mb-3">
-                                            <a class="btn btn-primary" href="{% url 'talentdetail' i.id %}">Apply Now</a>
+                                            <a class="btn btn-primary" href="{% url 'talentdetail' i.id %}">View more</a>
                                         </div>
                                     </div>
                                 </div>

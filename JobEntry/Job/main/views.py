@@ -369,11 +369,11 @@ class UserPage(DetailView):
     def get(self,request,id):
         user=User.objects.filter(pk=id)
         usern=request.user
-        # usern.username=usern.username.capitalize()
+        usern.username=usern.username.capitalize()
 
         context={
                 'user':user,
-                'usern':usern
+                'usern':usern,
                 }
         return render(request,self.template_name,context)
     
@@ -440,14 +440,20 @@ def Saves(request,id):
     job=JobCreate.objects.get(pk=id)
     user=request.user
     current_savec=job.savec
+    current_moment = job.dissave
     saved=Saved.objects.filter(job=job,user=user).count()
     if not saved:
         saved=Saved.objects.create(user=user,job=job)
         current_savec=current_savec + 1
+        current_moment = False
+
     else:
         saved=Saved.objects.filter(user=user,job=job).delete()
         current_savec=current_savec - 1
+        current_moment = True
+
     job.savec=current_savec
+    job.dissave = current_moment
     job.save()
 
     return redirect('savepage')
@@ -466,3 +472,14 @@ class SavePage(ListView):
                 }
         
         return render(request,self.template_name,context)
+    
+def SerachTalent(request):
+    talan=Talent.objects.filter(prof__icontains=request.GET.get('prof'),\
+                                rank__icontains=request.GET.get('rank'))
+    
+    context={
+        'talan':talan,
+
+            }
+    
+    return render(request,'talent.html',context)

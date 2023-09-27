@@ -26,7 +26,8 @@ urlpatterns=[
     path('searchuser/',SearchUser.as_view(),name='searchuser'),
     path('username/',SearchWorker,name='searchworker'),
     path('save/<int:id>/',Saves,name='saves'),
-    path('savepage/',SavePage.as_view(),name='savepage')
+    path('savepage/',SavePage.as_view(),name='savepage'),
+    path('talentsearch/',SerachTalent,name='searchtalent'),
     
 
             ]
