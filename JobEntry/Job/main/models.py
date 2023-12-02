@@ -69,6 +69,7 @@ class HomeAbout(models.Model):
     title=models.CharField('Title',max_length=255)
     text=models.TextField("text")
     skill=models.TextField('skill',blank=True)
+    img=models.ImageField(upload_to='Home_media',null=True)
 
     def __str__(self) -> str:
         return self.title
@@ -82,7 +83,7 @@ class Apply(models.Model):
     obj=models.ForeignKey(JobCreate,on_delete=models.CASCADE)
     name=models.CharField('Name',max_length=50)
     email=models.EmailField('email')
-    portfolio=models.CharField('Portfolio',max_length=100)
+    phone=PhoneNumberField('Phoen number')
     coverlatter=models.TextField('Coverlatter')
     img=models.ImageField('Imagers',upload_to='Apply_media')
 
@@ -183,6 +184,8 @@ class UserInfo(models.Model):
     licenses=models.CharField('Licenses & certificationsLicenses',blank=True,max_length=255)
     skills=models.CharField('skills',max_length=500,blank=True)
     open=models.BooleanField('Open to work',default=True)
+    points=models.IntegerField(default=10)
+
 
 
 

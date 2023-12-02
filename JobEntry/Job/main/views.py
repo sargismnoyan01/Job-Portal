@@ -57,21 +57,28 @@ def SearchWord(request):
 class CreateDetalView(DetailView):
     template_name='create.html'
     def get(self,request):
+        userinfo=UserInfo.objects.get(obj=request.user)
         form=CreateForm
         contactus=ContactUs.objects.get()
 
 
         return render(request,self.template_name,{'form':form,
                                                   'contactus':contactus,
-                                                  'link':'Create'
+                                                  'link':'Create',
+                                                  'userinfo':userinfo,
+
                                                   })
     
     def post(self,request):
+        
+        usern=UserInfo.objects.get(obj=request.user)
         form=CreateForm(request.POST,request.FILES)
         subject='Նոր Նամակ JobEntry-ից'
         body=f'''Բարև։{request.POST.get('proff')}-ի վերաբերյալ ձեր աշխատաքի հայտարարությունը հաջողությամբ կատարվել է։
-            Շնորհակալություն մեր կայքից օգտվելու համար։'''
+            Շնորհակալություն մեր կայքից օգտվելու համար։ 
+            Ձեր ընթացիք միավորները կազմում են {request.POST.get('point')}'''
         if form.is_valid():
+            usern.points -= 1
             form.save()
             email=EmailMessage(
                 subject=subject,
@@ -138,7 +145,7 @@ class JobDetail(DetailView):
                 body=f'''
                 name-{request.POST.get('name')},
                 email-{request.POST.get('email')},
-                Portfolio-{request.POST.get('portfolio')},
+                Phone-{request.POST.get('phone')},
                 coverlatter-{request.POST.get('coverlatter')},
                 ''',
                 from_email=EMAIL_HOST_USER,
@@ -370,10 +377,12 @@ class UserPage(DetailView):
         user=User.objects.filter(pk=id)
         usern=request.user
         usern.username=usern.username.capitalize()
+        # userinfo=UserInfo.objects.get(user=usern)
 
         context={
                 'user':user,
                 'usern':usern,
+                # 'userinfo':userinfo
                 }
         return render(request,self.template_name,context)
     

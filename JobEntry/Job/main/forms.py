@@ -11,7 +11,7 @@ class CreateForm(forms.ModelForm):
 class ApplyForm(forms.ModelForm):
     class Meta:
         model=Apply
-        fields=['name','email','portfolio','coverlatter','img']
+        fields=['name','email','phone','coverlatter','img']
 
 class TestForm(forms.ModelForm):
     class Meta:

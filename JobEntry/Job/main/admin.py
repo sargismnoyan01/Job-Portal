@@ -11,9 +11,9 @@ admin.site.register(ContactUs)
 
 @admin.register(Apply)
 class ApplyModelAdmin(admin.ModelAdmin):
-    list_display=['name','obj','portfolio'] 
-    list_display_links=['name','obj','portfolio']
-    search_fields=['name','obj','portfolio']
+    list_display=['name','obj','phone'] 
+    list_display_links=['name','obj','phone']
+    search_fields=['name','obj','phone']
 
 
 @admin.register(HomeCarousel)
