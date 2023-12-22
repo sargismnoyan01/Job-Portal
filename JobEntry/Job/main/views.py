@@ -7,6 +7,9 @@ from Job.settings import EMAIL_HOST_USER
 from django.core.paginator import Paginator
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+
 
 
 # ***Home***
@@ -140,18 +143,19 @@ class JobDetail(DetailView):
             obj=form.save(commit=False)
             obj.obj=subjobi
             obj.save()
-            email=EmailMessage(
-                subject=f'Նոր տեղեկություն ձեր տեղադրած {subjobi.proff} հաստիքի վերաբերյալ',
-                body=f'''
-                name-{request.POST.get('name')},
-                email-{request.POST.get('email')},
-                Phone-{request.POST.get('phone')},
-                coverlatter-{request.POST.get('coverlatter')},
-                ''',
-                from_email=EMAIL_HOST_USER,
-                to=[subjobi.email]
-            )
-            email.send()
+
+            subject=f'Նոր տեղեկություն ձեր տեղադրած {subjobi.proff} հաստիքի վերաբերյալ'
+            message=f'''
+            name-    {request.POST.get('name')},\n
+            email-   {request.POST.get('email')},\n
+            Phone-   {request.POST.get('phone')},\n
+            coverlatter-   {request.POST.get('coverlatter')},
+            '''
+            from_email=EMAIL_HOST_USER
+            recipient_list=[subjobi.email]
+            html_message=render_to_string('email_template.html',{'subject':subject,'content':message,})
+            send_mail(subject,message,from_email,recipient_list,html_message=html_message)
+
             return redirect('joblist')
         else:
             form=ApplyForm()
@@ -200,20 +204,24 @@ class TestimonialView(ListView):
         form=TestForm(request.POST,request.FILES)
 
         if form.is_valid():
-            form.save()           
-            email=EmailMessage(
-                subject='Բարև JobEntry-ի կայքից։',
-                body=f'{request.POST.get("name")} ձեր կարծիքը կարևոր է մեզ համար',
-                from_email=EMAIL_HOST_USER,
-                to=[request.POST.get('email')]
-            )
-            email.send()
+            form.save()
+            subject = f'''ԲԱրև {request.POST.get('name')}'''
+            message = f'''
+                Ձեր կարծիքը կարևոր է մեզ համար \U0001F917
+                '''
+            from_email = EMAIL_HOST_USER
+            recipient_list = [request.POST.get('email')]
+
+            html_message = render_to_string('email_template.html', {'subject': subject, 'content': message,})
+
+            send_mail(subject, message, from_email, recipient_list, html_message=html_message)
+
             return redirect('home')
         else:
-            form=TestForm()
+            form = TestForm()
 
-        return render(request,self.template_name,{'form':form})
-    
+        return render(request, 'testimonial.html', {'form': form})
+
 # ***Resiume***
 class Resiume(ListView):
     template_name='resiume.html'
@@ -315,9 +323,9 @@ class ContactView(ListView):
 
 def Register(request):
     contactus=ContactUs.objects.get()
-    form=UserCreationForm()
+    form=CretionUserForm()
     if request.method=='POST':
-        form=UserCreationForm(request.POST)
+        form=CretionUserForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('login')
