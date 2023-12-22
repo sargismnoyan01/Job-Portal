@@ -1,73 +1,62 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'register.css' %}">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            width: 100%;
-            max-width: 400px; /* Adjust the maximum width as needed */
-            padding: 20px;
-        }
-        .form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-width: 350px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 20px;
-            position: relative;
-        }
-    </style>
     <title>Document</title>
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'register.css' %}">
     
-</body>
-</html>
-<div class="container">
-    <form class="form" method="post">
-        {% csrf_token %}
-        <p class="title">Register</p>
-        <p class="message">Signup now and get full access to our app.</p>
-        <div class="flex">
+
+
+</head>
+    <div  class="main">
+        <span class="menu">
+            <a class="about" href="{% url 'home' %}">HOME</a>
+            <a class="about" href="{% url 'about' %}">ABOUT</a>
+            <a class="about" href="{% url 'joblist' %}">JOBS</a>
+            <a class="about" href="{% url 'talent' %}">TALENTS</a>
+            <a class="about" href="{% url 'contact' %}">CONTACT</a>   
+        </span>
+    
+    
+    
+    
+        <form class="form" method="post" >
+            {% csrf_token %}
+            <p class="title">Register </p>
+            <p class="message">Signup now and get full access to our app. </p>
+                <div class="flex">
+                <label id="Firstname">
+                    <input name="username" required="" placeholder="" type="text" class="input" >
+                    <span>Firstname</span>
+                </label>
+        
+                <label id="Lastname">
+                    <input name="last_name" required="" placeholder="" type="text" class="input"  >
+                    <span>Lastname</span>
+                </label>
+            </div>  
+                    
+            <label id="email">
+                <input name="email" required="" placeholder="" type="email" class="input" >
+                <span>Email</span>
+            </label> 
+                
             <label>
-                <input class="input" type="text" placeholder="" required="" name="username">
-                <span>Firstname</span>
+                <input name="password1" required="" placeholder="" type="password" class="input"  >
+                <span>Password</span>
             </label>
             <label>
-                <input class="input" type="text" placeholder="" required="" name="last_name">
-                <span>Lastname</span>
+                <input  name="password2" required="" placeholder="" type="password" class="input" >
+                <span>Confirm password</span>
             </label>
-        </div>
-        <label>
-            <input class="input" type="email" placeholder="" required="" name="email">
-            <span>Email</span>
-        </label>
-        <label>
-            <input class="input" type="password" placeholder="" required="" name="password1">
-            <span>Password</span>
-        </label>
-        <label>
-            <input class="input" type="password" placeholder="" required="" name="password2">
-            <span>Confirm password</span>
-        </label>
-        <button class="submit">Submit</button>
-        {% for message in messages %}
+            <button class="submit">Submit</button>
+            <p class="signin">Already have an acount ? <a  id="signIn_btn" href="{% url 'login' %}">Sign in</a> </p>
+            {% for message in messages %}
             <p style="color: red;">{{ message }}</p>
         {% endfor %}
-        <p class="signin">Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
-        <p class="signin"><a href="{% url 'home' %}">Return to home page</a></p>
-    </form>
-</div>
+        </form>
+    </div>
+</body>
+</html>

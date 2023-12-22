@@ -54,6 +54,7 @@
             </div>
         <button type="submit" class="form-submit-btn">Sign In</button>
         </form>
+        <a class="signup-link link"  href="{% url 'password_reset' %}"> Forgot Password</a>
         {% if messages %}
         <ul class="messages">
             {% for message in messages %}
