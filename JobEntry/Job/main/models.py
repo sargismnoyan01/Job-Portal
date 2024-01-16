@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
+import datetime
+
 
 
 # ***Home***
@@ -85,7 +87,8 @@ class Apply(models.Model):
     email=models.EmailField('email')
     phone=PhoneNumberField('Phoen number')
     coverlatter=models.TextField('Coverlatter')
-    img=models.ImageField('Imagers',upload_to='Apply_media')
+    img=models.ImageField('Imagers',upload_to='Apply_media',blank=True)
+    resi=models.FileField('Resiume',upload_to='resiumes',null=True)
 
 
     def __str__(self) -> str:
@@ -185,7 +188,7 @@ class UserInfo(models.Model):
     skills=models.CharField('skills',max_length=500,blank=True)
     open=models.BooleanField('Open to work',default=True)
     points=models.IntegerField(default=10)
-
+    register_dt=models.DateTimeField(auto_now_add=True,null=True)
 
 
 
@@ -200,3 +203,8 @@ class UserInfo(models.Model):
 class Saved(models.Model):
     job=models.ForeignKey(JobCreate,on_delete=models.CASCADE)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
+
+
+class OneUser(models.Model):
+    userr=models.OneToOneField(User,on_delete=models.CASCADE)
+    bio=models.CharField('Bio',max_length=20)

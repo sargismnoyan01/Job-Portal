@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -11,6 +6,11 @@
         <title>Your HTML Document</title>
     
         <style>
+            /* Define a CSS class */
+            .break-after-10 {
+            /* Set white-space to pre-line */
+            white-space: pre-line;
+            }
             /* Add styles here */
             a.job-portal-link {
                 color: blue;
@@ -34,7 +34,7 @@
         <a href="http://127.0.0.1:8000/" class="job-portal-link">Go to Job-Portal</a> <hr><br><br>
        <h3> <center>{{ subject }}</center></h3>
         <hr><br><br><br>
-        <h2 class="content-heading">{{ content }}</h2>
+        <p class="break-after-10">{{ content }}</p>
     
     </body>
     </html>

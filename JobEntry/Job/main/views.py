@@ -146,10 +146,11 @@ class JobDetail(DetailView):
 
             subject=f'Նոր տեղեկություն ձեր տեղադրած {subjobi.proff} հաստիքի վերաբերյալ'
             message=f'''
-            name-    {request.POST.get('name')},\n
-            email-   {request.POST.get('email')},\n
-            Phone-   {request.POST.get('phone')},\n
-            coverlatter-   {request.POST.get('coverlatter')},
+            name-    {request.POST.get('name')} |   
+            email-   {request.POST.get('email')} |
+            Phone-   {request.POST.get('phone')} |
+            coverlatter-   {request.POST.get('coverlatter')} |
+            Resiume - Դիտել հիմա։
             '''
             from_email=EMAIL_HOST_USER
             recipient_list=[subjobi.email]
@@ -500,3 +501,20 @@ def SerachTalent(request):
             }
     
     return render(request,'talent.html',context)
+
+
+
+def analyse(request):
+    jobcreate=JobCreate.objects.count()
+    user=User.objects.count()
+    users=User.objects.all()
+    subuser=User.objects.filter()
+    resiume=Talent.objects.count()
+    return render(request,'analyse/index_analyse.html',{'jobcreate':jobcreate,
+                                                        'user':user,
+                                                        'resiume':resiume,
+                                                        'users':users,
+                                                        'subuser':subuser
+                                                        })
+
+

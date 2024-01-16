@@ -21,9 +21,9 @@
                         <div class="mb-5">
                             <h4 class="mb-3"></h4>
                             <h4 class="mb-3">Coverlatter</h4>
-                            <p>{{ i.coverlatter }}</p>
+                            <p>{{ i.coverlatter|safe }}</p>
                             <h4 class="mb-3">Summary</h4>
-                            <p>{{ i.summery }}</p>
+                            <p>{{ i.summery|safe }}</p>
                         </div>
                     </div>
         
@@ -34,7 +34,7 @@
                         </div>
                         <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
                             <h4 class="mb-4">Skills</h4>
-                            <p class="m-0">{{ i.skill }}</p>
+                            <p class="m-0">{{ i.skill|safe }}</p>
                         </div>
                     </div>
                 </div>

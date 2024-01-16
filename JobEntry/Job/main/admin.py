@@ -7,7 +7,7 @@ admin.site.register(MainCategories)
 admin.site.register(Testimonial)
 admin.site.register(Saved)
 admin.site.register(ContactUs)
-
+admin.site.register(OneUser)
 
 @admin.register(Apply)
 class ApplyModelAdmin(admin.ModelAdmin):

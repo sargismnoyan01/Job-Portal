@@ -1,0 +1,1 @@
+web gunicorn  jobEntry.wsga:application --log-file -

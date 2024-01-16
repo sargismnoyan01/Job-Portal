@@ -166,7 +166,10 @@
         </form>
     <br>
     {% for i in user %}
+    {% comment %}
     {% if i.username != me.username %}
+    {% endcomment %}
+    {% if i.is_active %}
     <a href="{% url 'user' i.id %}">
         {% for j in i.userp.all %}
         <div style="display: flex; align-items: center;">
@@ -183,6 +186,10 @@
     </a>
     <hr><br>
     {% endif %}
+    {% comment %}
+    {% endif %}
+    {% endcomment %}
+
     {% endfor %}
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

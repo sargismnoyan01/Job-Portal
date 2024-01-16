@@ -1,0 +1,49 @@
+<div class="category-tab"><!--category-tab-->
+    <div class="col-sm-12">
+        <ul class="nav nav-tabs">
+            {% for i in panel_list %}
+                <li><a href="#{{ i.id }}" data-toggle="tab">{{ i.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="{{ panel_list_active.id }}">
+        {% for j in panel_list_active.type_key.all %}
+            <div class="col-sm-3">
+                <div class="product-image-wrapper">
+                    <div class="single-products">
+                        <div class="productinfo text-center">
+                            <img src="{{ j.img.url }}" alt="" />
+                            <h2>${{ j.price }}</h2>
+                            <p>{{ j.name }}</p>
+                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        </div>
+        
+        {% for i in panel_list %}
+        <div class="tab-pane fade" id="{{ i.id }}">
+            {% for j in i.type_key.filter %}
+            <div class="col-sm-3">
+                <div class="product-image-wrapper">
+                    <div class="single-products">
+                        <div class="productinfo text-center">
+                            <img src="{{ j.img.url }}" alt="" />
+                            <h2>${{ j.price }}</h2>
+                            <p>{{ j.name }}</p>
+                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div><!--/category-tab-->
